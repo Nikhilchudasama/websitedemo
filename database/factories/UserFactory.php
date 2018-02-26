@@ -23,7 +23,6 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => bcrypt('secret'),
         'email' => $faker->unique()->safeEmail,
         'mobile' => $faker->phoneNumber,
-        'modules' => 1,
         'active' => 1
     ];
 });

@@ -14,7 +14,6 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class)->create([
             'username' => 'admin',
             'password' => bcrypt('123456'),
-            'modules' => 'all',
         ]);
        factory(App\User::class, 50)->create();
     }

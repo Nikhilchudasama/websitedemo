@@ -12,7 +12,12 @@
                 Manage
             </li>
 
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.index') }}">
+                    <i class="far fa-building"></i>
+                    Users
+                </a>
+            </li>
         </ul>
     </nav>
 

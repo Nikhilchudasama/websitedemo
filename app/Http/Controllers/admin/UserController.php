@@ -15,6 +15,7 @@ class UserController extends Controller
     {
         return view('admin.dashboard');
     }
+
     /**
      * Logout
      *
@@ -23,10 +24,13 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('user')->logout();
+
         $request->session()->flush();
         $request->session()->regenerate();
+
         return redirect()->route('admin_login_page');
     }
+
     /**
      * Display list of Users
      *
@@ -34,9 +38,10 @@ class UserController extends Controller
      **/
     public function index()
     {
-        $users = User::getList();
+        $users = User::paginate(10);
         return view('admin.user.index', compact('users'));
     }
+
     /**
      * Display form to create a new User
      *
@@ -44,8 +49,7 @@ class UserController extends Controller
      **/
     public function create()
     {
-        $modules = User::$modules;
-        return view('admin.user.add', compact('modules'));
+        return view('admin.user.add');
     }
     /**
      * Save new user
@@ -55,9 +59,11 @@ class UserController extends Controller
     public function store()
     {
         $validatedData = request()->validate(User::validationRules());
+
         $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['modules'] = implode(',', $validatedData['modules']);
+
         User::create($validatedData);
+
         return redirect()->route('users.index')->with(['type' => 'success', 'message' => 'User added']);
     }
     /**
@@ -68,9 +74,7 @@ class UserController extends Controller
      **/
     public function edit(User $user)
     {
-        $modules = User::$modules;
-        $user->modules = explode(',', $user->modules);
-        return view('admin.user.edit', compact('user', 'modules'));
+        return view('admin.user.edit', compact('user'));
     }
     /**
      * Update user details
@@ -81,8 +85,9 @@ class UserController extends Controller
     public function update(User $user)
     {
         $validatedData = request()->validate(User::validationRules($user->id));
-        $validatedData['modules'] = implode(',', request('modules'));
+
         $user->update($validatedData);
+
         return redirect()->route('users.index')->with(['type' => 'success', 'message' => 'User Updated']);
     }
     /**
@@ -94,7 +99,7 @@ class UserController extends Controller
     {
         return view('admin.user.profile');
     }
-    
+
     /**
      * Update Admin Profile Details
      *
@@ -103,8 +108,11 @@ class UserController extends Controller
     public function profileUpdate()
     {
         $validatedData = request()->validate(User::validationRules(request('id')));
+
         $user = User::find(request('id'));
+
         $user->update($validatedData);
+
         return redirect()->route('admin_home')->with(['type' => 'success', 'message' => 'Profile Updated']);
     }
 }

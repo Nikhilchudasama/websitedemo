@@ -2,10 +2,6 @@
 
 @section('title', 'Add New User')
 
-@push('styles')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/3.0.3/styles/css/choices.min.css">
-@endpush
-
 @section('content-body')
     <div class="row">
         <div class="col-lg-12 p-3">
@@ -48,19 +44,6 @@
                         <div class="form-group">
                             <label for="mobile">Mobile</label>
                             <input type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile Number" value="{{ old('mobile') }}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="select-module">Modules</label>
-                            <select id="select-module" name="modules[]" class="form-control" placeholder="Select Modules" multiple>
-                                @foreach($modules as $moduleKey => $module)
-                                    <option value="{{ $moduleKey }}"
-                                        {{ is_array(old('modules')) && in_array($moduleKey, old('modules')) ? 'selected' : '' }}
-                                    >
-                                        {{ $module }}
-                                    </option>
-                                @endforeach
-                            </select>
                         </div>
 
                         <div class="form-group">

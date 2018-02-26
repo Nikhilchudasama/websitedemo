@@ -22,7 +22,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->string('email')->unique();
             $table->string('mobile')->nullable();
-            $table->string('modules')->comment("Page permissions. Comma separated list of module ids. 'All' for admin user");
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

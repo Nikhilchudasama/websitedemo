@@ -47,19 +47,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="select-module">Modules</label>
-                            <select id="select-module" name="modules[]" class="form-control" placeholder="Select Modules" multiple>
-                                @foreach($modules as $moduleKey => $module)
-                                    <option value="{{ $moduleKey }}"
-                                        {{ (is_array($user->modules) && in_array($moduleKey, $user->modules)) ? 'selected' : '' }}
-                                    >
-                                        {{ $module }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
                             <label for="status">Status</label>
                             <select id="status" name="active" class="form-control">
                                 <option value="1">Active</option>

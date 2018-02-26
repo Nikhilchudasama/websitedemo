@@ -46,9 +46,9 @@
 
                                         <td>{{ $user->getStatus() }}</td>
 
-                                        <td class="text-center">
+                                        <td class="text-center" style="font-size:22px;">
                                             <a href="{{ route('users.edit', ['user' => $user->id]) }}">
-                                                <i class="far fa-edit"></i>
+                                                &#9997;
                                             </a>
                                         </td>
                                     </tr>
@@ -57,11 +57,7 @@
                         </table>
                     </div>
 
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-                            {{ $users->links('vendor.pagination.bootstrap-4') }}
-                        </ul>
-                    </nav>
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>

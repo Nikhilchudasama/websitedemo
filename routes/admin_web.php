@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth:user'], function () {
       // dashboard
       Route::get('/dashboard', 'UserController@home')->name('admin_home');
 
+      // User
+      Route::resource('users', 'UserController');
+
     // Logout
     Route::get('/logout', 'UserController@logout')->name('admin_logout');
 });
