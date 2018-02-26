@@ -18,6 +18,12 @@
                     Users
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('menus.index') }}">
+                    <i class="far fa-building"></i>
+                    Menus
+                </a>
+            </li>
         </ul>
     </nav>
 

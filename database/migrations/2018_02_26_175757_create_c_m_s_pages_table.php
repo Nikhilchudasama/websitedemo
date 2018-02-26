@@ -20,6 +20,7 @@ class CreateCMSPagesTable extends Migration
             $table->string('image')->nullable();
             $table->boolean('status')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

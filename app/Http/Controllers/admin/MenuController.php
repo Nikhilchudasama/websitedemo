@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\CMSPage;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Menu;
 
-class CMSPageController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class CMSPageController extends Controller
      */
     public function index()
     {
-        //
+      $menus = Menu::paginate(10);
+      return view('admin.menu.index', compact('menus'));
     }
 
     /**
@@ -24,7 +26,7 @@ class CMSPageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu.add');
     }
 
     /**
@@ -35,50 +37,58 @@ class CMSPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = request()->validate(Menu::validationRules());
+
+        Menu::create($validatedData);
+
+        return redirect()->route('menus.index')->with(['type' => 'success', 'message' => 'Menu added']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\CMSPage  $cMSPage
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function show(CMSPage $cMSPage)
+    public function show(Menu $menu)
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CMSPage  $cMSPage
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(CMSPage $cMSPage)
+    public function edit(Menu $menu)
     {
-        //
+          return view('admin.menu.edit', compact('menu'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CMSPage  $cMSPage
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CMSPage $cMSPage)
+    public function update(Request $request, Menu $menu)
     {
-        //
+        $validatedData = request()->validate(Menu::validationRules($menu->id));
+
+        $menu->update($validatedData);
+
+        return redirect()->route('menus.index')->with(['type' => 'success', 'message' => 'Menu Updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CMSPage  $cMSPage
+     * @param  \App\Menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CMSPage $cMSPage)
+    public function destroy(Menu $menu)
     {
         //
     }
