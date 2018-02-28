@@ -34,6 +34,9 @@ Route::group(['middleware' => 'auth:user'], function () {
       // Menu
       Route::resource('menus', 'MenuController');
 
+      //slider
+      Route::resource('sliders', 'SliderController');
+
     // Logout
     Route::get('/logout', 'UserController@logout')->name('admin_logout');
 });

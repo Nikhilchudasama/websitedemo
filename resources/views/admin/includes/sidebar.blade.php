@@ -24,6 +24,12 @@
                     Menus
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('sliders.index') }}">
+                    <i class="far fa-building"></i>
+                    Sliders
+                </a>
+            </li>
         </ul>
     </nav>
 

@@ -15,4 +15,23 @@ class Slider extends Model
     protected $fillable = [
         'title', 'content', 'image', 'status'
     ];
+
+    public static function validationRules($slidersId = null)
+    {
+        $uniqueRule = Rule::unique('sliders');
+        if ($slidersId) {
+            $uniqueRule->ignore($slidersId);
+        }
+
+        return [
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'status' => 'sometimes|boolean'
+        ];
+    }
+
+    public function getStatus()
+    {
+        return $this->status ? 'Active' : 'Inactive';
+    }
 }
