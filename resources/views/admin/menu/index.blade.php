@@ -44,6 +44,12 @@
                                             <a href="{{ route('menus.edit', ['menu' => $menu->id]) }}">
                                                 &#9997;
                                             </a>
+                                            <form action="{{ route('menus.destroy', ['menu' => $menu->id]) }}" method="POST" id="delete-form">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+
+                                                <span class="delete-data"><i class="far fa-trash-alt"></i></span>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -57,3 +63,9 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    {{--  Advanced Search  --}}
+
+
+    <script src="{{ asset('js/backend/backend-common-script.js') }}"></script>
+@endpush
