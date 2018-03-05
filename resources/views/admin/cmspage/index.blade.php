@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Sliders')
+@section('title', 'CMSPage')
 
 @section('content-body')
     <div class="row">
@@ -8,13 +8,13 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="d-inline">
-                        Sliders
+                        CMSPage
                     </h3>
 
                     <div class="float-right mt-1">
-                        <a href="{{ route('sliders.create') }}" class="btn btn-primary">
-                            <i class="far fa-plus-square" title="Create New Slider"></i>
-                            &nbsp; Add New Slider
+                        <a href="{{ route('cmspage.create') }}" class="btn btn-primary">
+                            <i class="far fa-plus-square" title="Create New CMSPage"></i>
+                            &nbsp; Add New CMSPage
                         </a>
                     </div>
                 </div>
@@ -33,26 +33,23 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($sliders as $slider)
+                                @foreach ($cMSPages as $cMSPage)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('upload/images/slider')}}/{{$slider->image}}" width="80" alt="{{ $slider->title }}">
+                                            <img src="{{ asset('upload/images/cmspage')}}/{{$cMSPage->image}}" width="80" alt="{{ $cMSPage->title }}">
                                         </td>
 
-                                        <td>{{ $slider->title }}</td>
+                                        <td>{{ $cMSPage->title }}</td>
 
-                                        <td>{{ $slider->content }}</td>
+                                        <td>{{ $cMSPage->content }}</td>
 
-                                        <td>{{ $slider->getStatus() }}</td>
+                                        <td>{{ $cMSPage->getStatus() }}</td>
 
                                         <td class="text-center">
-                                            <a href="{{ route('sliders.edit', ['slider' => $slider->id]) }}">
+                                            <a href="{{ route('cmspage.edit', ['cMSPage' => $cMSPage->id]) }}">
                                                 <i class="far fa-edit"></i>
                                             </a>
-                                            <!-- <a href="{{ route('sliders.destroy', ['slider' => $slider->id]) }}">
-                                              <span class="delete-data"><i class="far fa-trash-alt"></i></span>
-                                            </a> -->
-                                            <form action="{{ route('sliders.destroy', ['slider' => $slider->id]) }}" method="POST" id="delete-form">
+                                            <form action="{{ route('cmspage.destroy', ['cMSPage' => $cMSPage->id]) }}" method="POST" id="delete-form">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -67,7 +64,7 @@
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
-                            {{ $sliders->links() }}
+                            {{ $cMSPages->links() }}
                         </ul>
                     </nav>
                 </div>

@@ -13,7 +13,7 @@ class CreateCMSPagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cmspages', function (Blueprint $table) {
+        Schema::create('c_m_s_pages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->nullable();
             $table->string('content')->nullable();
@@ -31,6 +31,6 @@ class CreateCMSPagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cmspages');
+        Schema::dropIfExists('c_m_s_pages');
     }
 }

@@ -15,4 +15,23 @@ class CMSPage extends Model
     protected $fillable = [
         'title', 'content', 'image', 'status'
     ];
+
+    public static function validationRules($cMSPageId = null)
+    {
+        $uniqueRule = Rule::unique('cmspage');
+        if ($cMSPageId) {
+            $uniqueRule->ignore($cMSPageId);
+        }
+
+        return [
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'status' => 'sometimes|boolean'
+        ];
+    }
+
+    public function getStatus()
+    {
+        return $this->status ? 'Active' : 'Inactive';
+    }
 }

@@ -30,6 +30,12 @@
                     Sliders
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('cmspage.index') }}">
+                    <i class="far fa-building"></i>
+                    CMSPage
+                </a>
+            </li>
         </ul>
     </nav>
 
