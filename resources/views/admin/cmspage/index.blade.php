@@ -33,23 +33,23 @@
                             </thead>
 
                             <tbody>
-                                @foreach ($cMSPages as $cMSPage)
+                                @foreach ($cmspages as $cmspage)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('upload/images/cmspage')}}/{{$cMSPage->image}}" width="80" alt="{{ $cMSPage->title }}">
+                                            <img src="{{ asset('upload/images/cmspage')}}/{{$cmspage->image}}" width="80" alt="{{ $cmspage->title }}">
                                         </td>
 
-                                        <td>{{ $cMSPage->title }}</td>
+                                        <td>{{ $cmspage->title }}</td>
 
-                                        <td>{{ $cMSPage->content }}</td>
+                                        <td>{{ strip_tags($cmspage->content) }}</td>
 
-                                        <td>{{ $cMSPage->getStatus() }}</td>
+                                        <td>{{ $cmspage->getStatus() }}</td>
 
                                         <td class="text-center">
-                                            <a href="{{ route('cmspage.edit', ['cmspage' => $cMSPage->id]) }}">
+                                            <a href="{{ route('cmspage.edit', ['cmspage' => $cmspage->id]) }}">
                                                 <i class="far fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('cmspage.destroy', ['cMSPage' => $cMSPage->id]) }}" method="POST" id="delete-form">
+                                            <form action="{{ route('cmspage.destroy', ['cmspage' => $cmspage->id]) }}" method="POST" id="delete-form">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
@@ -64,7 +64,7 @@
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-end">
-                            {{ $cMSPages->links() }}
+                            {{ $cmspages->links() }}
                         </ul>
                     </nav>
                 </div>

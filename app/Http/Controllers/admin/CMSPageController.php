@@ -16,8 +16,8 @@ class CMSPageController extends Controller
      */
     public function index()
     {
-      $cMSPages = CMSPage::paginate(10);
-      return view('admin.cmspage.index', compact('cMSPages'));
+      $cmspages = CMSPage::paginate(10);
+      return view('admin.cmspage.index', compact('cmspages'));
     }
 
     /**
@@ -113,13 +113,13 @@ class CMSPageController extends Controller
      * @param  \App\CMSPage  $cMSPage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CMSPage $cMSPage)
+    public function destroy(CMSPage $cmspage)
     {
-      if($cMSPage->image != ''){
-          $path = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['SCRIPT_NAME'])."/upload/images/cmsimage/".$cMSPage->image;
+      if($cmspage->image != ''){
+          $path = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['SCRIPT_NAME'])."/upload/images/cmspage/".$cmspage->image;
           unlink($path);
       }
-      $cMSPage->delete();
+      $cmspage->delete();
       return;
     }
 }

@@ -5,7 +5,7 @@ Array.from(deleteIcons).forEach(function (deleteIcon) {
     deleteIcon.onclick = function () {
         if (confirm('Are you sure?')) {
             var url = deleteIcon.parentElement.action;
-
+            alert(url);
             axios.delete(url).then(function (response) {
                 if (response['data'] == null || response['data'] == '') {
                     var tr = deleteIcon.parentElement.parentElement.parentElement;
