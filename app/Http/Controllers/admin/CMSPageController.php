@@ -72,13 +72,9 @@ class CMSPageController extends Controller
      * @param  \App\CMSPage  $cMSPage
      * @return \Illuminate\Http\Response
      */
-    public function edit(CMSPage $cMSPage)
+    public function edit(CMSPage $cmspage)
     {
-      dd($cMSPage);
-
-        dd($cMSPage);
-        exit;
-        return view('admin.cmspage.edit', compact('cMSPage'));
+        return view('admin.cmspage.edit', compact('cmspage'));
     }
 
     /**
@@ -88,26 +84,26 @@ class CMSPageController extends Controller
      * @param  \App\CMSPage  $cMSPage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CMSPage $cMSPage)
+    public function update(Request $request, CMSPage $cmspage)
     {
-      $validatedData = request()->validate(CMSPage::validationRules($cMSPage->id));
+      $validatedData = request()->validate(CMSPage::validationRules($cmspage->id));
 
       if(Input::hasFile('image'))
       {
-          if($cMSPage->image != ''){
-              $path = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['SCRIPT_NAME'])."/upload/images/cmsimage/".$cMSPage->image;
+          if($cmspage->image != ''){
+              $path = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['SCRIPT_NAME'])."/upload/images/cmspage/".$cmspage->image;
               unlink($path);
           }
           $filename = str_replace(" ","_",strtolower(Input::get('image')));
           $fileInstance = Input::file('image');
           $extension = Input::file('image')->getClientOriginalExtension();
           $image = "slider".$filename."_".time().".".$extension;
-          $file = $fileInstance->move('upload/images/slider/',$image);
+          $file = $fileInstance->move('upload/images/cmspage/',$image);
           $validatedData['image'] = $image;
-
-
       }
-      $cMSPage->update($validatedData);
+
+      $cmspage->update($validatedData);
+
       return redirect()->route('cmspage.index')->with(['type' => 'success', 'message' => 'CMSPage Updated']);
     }
 

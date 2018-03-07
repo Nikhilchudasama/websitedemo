@@ -11,17 +11,16 @@
                         Edit CMSPage
                     </h3>
                 </div>
-                <?php
-                    dd($cMSPage);
-                ?>
-                <form method="post" enctype="multipart/form-data" action="{{ route('cmspage.update', ['cmspage' => $cMSPage->id]) }}">
+
+                <form method="post" enctype="multipart/form-data" action="{{ route('cmspage.update', ['cmspage' => $cmspage->id]) }}">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
+                    <input type="hidden" name="id" value="{{ $cmspage->id }}">
 
                     <div class="card-body">
                         <div class="form-group">
                             <label for="Title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{ $cMSPage->title }}">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{ $cmspage->title }}">
                         </div>
 
                         <div class="form-group">
@@ -31,7 +30,7 @@
                                 id="content"
                                 rows="4"
                                 placeholder="Enter Content"
-                            >{{ $cMSPage->content }}</textarea>
+                            >{{ $cmspage->content }}</textarea>
                         </div>
 
                         <div class="form-group">
@@ -40,9 +39,9 @@
                         </div>
 
                         <div class="form-group">
-                            <img src="{{ asset('upload/images/cmsimage')}}/{{$cMSPage->image}}"
-                                width="200"
-                                alt="{{ $cMSPage->title }}"
+                            <img src="{{ asset('upload/images/cmspage')}}/{{$cmspage->image}}"
+                                width="100"
+                                alt="{{ $cmspage->title }}"
                             >
                         </div>
 
@@ -50,7 +49,7 @@
                             <label for="status">Status</label>
                             <select id="status" name="status" class="form-control">
                                 <option value="1">Active</option>
-                                <option value="0" {{ $cMSPage->active == '0' ? 'selected' : ''}}>
+                                <option value="0" {{ $cmspage->active == '0' ? 'selected' : ''}}>
                                     Inactive
                                 </option>
                             </select>

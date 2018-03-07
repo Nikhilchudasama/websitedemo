@@ -46,7 +46,7 @@
                                         <td>{{ $cMSPage->getStatus() }}</td>
 
                                         <td class="text-center">
-                                            <a href="{{ route('cmspage.edit', ['cMSPage' => $cMSPage->id]) }}">
+                                            <a href="{{ route('cmspage.edit', ['cmspage' => $cMSPage->id]) }}">
                                                 <i class="far fa-edit"></i>
                                             </a>
                                             <form action="{{ route('cmspage.destroy', ['cMSPage' => $cMSPage->id]) }}" method="POST" id="delete-form">
