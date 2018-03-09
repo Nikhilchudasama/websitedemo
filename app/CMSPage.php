@@ -24,6 +24,7 @@ class CMSPage extends Model
         }
 
         return [
+            'menu_id' => 'required|integer',
             'title' => 'required|string',
             'content' => 'required|string',
             'status' => 'sometimes|boolean'
@@ -33,5 +34,9 @@ class CMSPage extends Model
     public function getStatus()
     {
         return $this->status ? 'Active' : 'Inactive';
+    }
+    public function Menus()
+    {
+        return $this->hasMany('App\Menu');
     }
 }

@@ -16,6 +16,19 @@
                     {{ csrf_field() }}
 
                     <div class="card-body">
+                      <div class="form-group">
+                          <label for="menu_id">Menu</label>
+                          <select id="menu_id" name="menu_id" class="form-control">
+                              <option value="">select Menu</option>
+                              @foreach ($menus as $menu)
+                              <option value="{{ $menu->id }}" {{ old('menu_id') == $menu->id ? 'selected' : ''}}>
+                                  {{$menu->menu_name}}
+                              </option>
+                              @endforeach;
+
+                          </select>
+                      </div>
+
                         <div class="form-group">
                             <label for="title">Title</label>
                             <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" value="{{ old('title') }}">
