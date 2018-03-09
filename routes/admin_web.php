@@ -40,6 +40,9 @@ Route::group(['middleware' => 'auth:user'], function () {
       //slider
       Route::resource('cmspage', 'CMSPageController');
 
+      //portfolio
+      Route::resource('portfolio', 'PortfolioController');
+
     // Logout
     Route::get('/logout', 'UserController@logout')->name('admin_logout');
 });

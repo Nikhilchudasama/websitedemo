@@ -36,6 +36,12 @@
                     CMSPage
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('Portfolio.index') }}">
+                    <i class="far fa-building"></i>
+                    Portfolio
+                </a>
+            </li>
         </ul>
     </nav>
 
