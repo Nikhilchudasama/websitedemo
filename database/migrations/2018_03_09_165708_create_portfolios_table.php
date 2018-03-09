@@ -14,13 +14,13 @@ class CreatePortfoliosTable extends Migration
     public function up()
     {
         Schema::create('portfolios', function (Blueprint $table) {
-            $table->increments('id');
-			$table->string('title')->nullable();
-            $table->string('designation')->nullable();
-            $table->string('image')->nullable();
-            $table->boolean('status')->default(1);
-            $table->timestamps();
-            $table->softDeletes();
+              $table->increments('id');
+              $table->string('name')->nullable();
+              $table->string('designation')->nullable();
+              $table->string('image')->nullable();
+              $table->boolean('status')->default(1);
+              $table->timestamps();
+              $table->softDeletes();
         });
     }
 

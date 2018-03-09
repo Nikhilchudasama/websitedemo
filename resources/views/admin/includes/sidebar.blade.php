@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('Portfolio.index') }}">
+                <a class="nav-link" href="{{ route('portfolio.index') }}">
                     <i class="far fa-building"></i>
                     Portfolio
                 </a>

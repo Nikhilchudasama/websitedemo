@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Edit CMSPage')
+@section('title', 'Edit Portfolio')
 
 @section('content-body')
     <div class="row">
@@ -8,29 +8,24 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        Edit CMSPage
+                        Edit Portfolio
                     </h3>
                 </div>
 
-                <form method="post" enctype="multipart/form-data" action="{{ route('cmspage.update', ['cmspage' => $cmspage->id]) }}">
+                <form method="post" enctype="multipart/form-data" action="{{ route('portfolio.update', ['portfolio' => $portfolio->id]) }}">
                     {{ csrf_field() }}
                     {{ method_field('PUT') }}
-                    <input type="hidden" name="id" value="{{ $cmspage->id }}">
+                    <input type="hidden" name="id" value="{{ $portfolio->id }}">
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="Title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Enter Title" value="{{ $cmspage->title }}">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" value="{{ $portfolio->name }}">
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Content</label>
-                            <textarea name="content"
-                                class="form-control"
-                                id="content"
-                                rows="4"
-                                placeholder="Enter Content"
-                            >{{ $cmspage->content }}</textarea>
+                            <label for="designation">Designation</label>
+                            <input type="text" class="form-control" name="designation" id="designation" placeholder="Enter Designation" value="{{ $portfolio->designation }}">
                         </div>
 
                         <div class="form-group">
@@ -39,9 +34,9 @@
                         </div>
 
                         <div class="form-group">
-                            <img src="{{ asset('upload/images/cmspage')}}/{{$cmspage->image}}"
+                            <img src="{{ asset('upload/images/portfolio')}}/{{$portfolio->image}}"
                                 width="100"
-                                alt="{{ $cmspage->title }}"
+                                alt="{{ $portfolio->title }}"
                             >
                         </div>
 
@@ -49,7 +44,7 @@
                             <label for="status">Status</label>
                             <select id="status" name="status" class="form-control">
                                 <option value="1">Active</option>
-                                <option value="0" {{ $cmspage->active == '0' ? 'selected' : ''}}>
+                                <option value="0" {{ $portfolio->active == '0' ? 'selected' : ''}}>
                                     Inactive
                                 </option>
                             </select>
@@ -57,7 +52,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <a href="{{ route('cmspage.index') }}" class="btn btn-md btn-danger">
+                        <a href="{{ route('portfolio.index') }}" class="btn btn-md btn-danger">
                             <i class="far fa-times-circle"></i>
                             Cancel
                         </a>
@@ -72,9 +67,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
-<script>
-	CKEDITOR.replace( 'content' );
-</script>
-@endpush

@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title', 'Add New CMSPage')
+@section('title', 'Add New Portfolio')
 
 @section('content-body')
     <div class="row">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>
-                        Add New CMSPage
+                        Add New Portfolio
                     </h3>
                 </div>
 
@@ -17,18 +17,13 @@
 
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" name="title" id="title" placeholder="Enter title" value="{{ old('title') }}">
+                            <label for="title">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" value="{{ old('name') }}">
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Content</label>
-                            <textarea name="content"
-                                class="form-control"
-                                id="content"
-                                rows="4"
-                                placeholder="Enter content"
-                            >{{ old('content') }}</textarea>
+                            <label for="designation">Designation</label>
+                              <input type="text" class="form-control" name="designation" id="designation" placeholder="Enter Designation" value="{{ old('designation') }}">
                         </div>
 
                         <div class="form-group">
@@ -48,7 +43,7 @@
                     </div>
 
                     <div class="card-footer">
-                        <a href="{{ route('cmspage.index') }}" class="btn btn-md btn-danger">
+                        <a href="{{ route('portfolio.index') }}" class="btn btn-md btn-danger">
                             <i class="far fa-times-circle"></i>
                             Cancel
                         </a>
@@ -63,9 +58,3 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-<script src="https://cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
-<script>
-	CKEDITOR.replace( 'content' );
-</script>
-@endpush
