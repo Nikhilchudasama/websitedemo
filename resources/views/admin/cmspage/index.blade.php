@@ -25,6 +25,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Image</th>
+                                    <th>Menu</th>
                                     <th>Title</th>
                                     <th>Content</th>
                                     <th>Status</th>
@@ -38,6 +39,8 @@
                                         <td>
                                             <img src="{{ asset('upload/images/cmspage')}}/{{$cmspage->image}}" width="80" alt="{{ $cmspage->title }}">
                                         </td>
+
+                                        <td>{{ $cmspage->Menus->menu_name }}</td>
 
                                         <td>{{ $cmspage->title }}</td>
 

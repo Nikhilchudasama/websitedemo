@@ -13,7 +13,7 @@ class CMSPage extends Model
     protected $dates = ['deleted_at'];
 
     protected $fillable = [
-        'title', 'content', 'image', 'status'
+        'title', 'content', 'image', 'status','menu_id'
     ];
 
     public static function validationRules($cMSPageId = null)
@@ -37,6 +37,6 @@ class CMSPage extends Model
     }
     public function Menus()
     {
-        return $this->hasMany('App\Menu');
+        return $this->belongsTo('App\Menu','menu_id');
     }
 }
